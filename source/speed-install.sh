@@ -42,42 +42,42 @@ speedFiles=("menubox.sh" "speed-cam.py" "sql_speed_gt.py" \
 fi
 
 for fname in "${speedFiles[@]}" ; do
-wget_output=$(wget -O $fname -q --show-progress https://raw.github.com/pageauc/speed-camera/master/source/$fname)
+wget_output=$(wget -O $fname -q --show-progress https://raw.githubusercontent.com/lexhartman/speed-camera/master/source/$fname)
 if [ $? -ne 0 ]; then
 if [ $? -ne 0 ]; then
 echo "ERROR - $fname wget Download Failed. Possible Cause Internet Problem."
 else
-wget -O $fname https://raw.github.com/pageauc/speed-camera/master/source/$fname
+wget -O $fname https://raw.githubusercontent.com/lexhartman/speed-camera/master/source/$fname
 fi
 fi
 done
 
 # Install supervisor files
-wget -O Readme.md -q --show-progress https://raw.github.com/pageauc/speed-camera/master/Readme.md
+wget -O Readme.md -q --show-progress https://raw.githubusercontent.com/lexhartman/speed-camera/master/Readme.md
 
 if [ ! -f supervisor/speed-cam.conf ]; then   # Do not overwrite existing file
-wget -O supervisor/speed-cam.conf -q --show-progress https://raw.github.com/pageauc/speed-camera/master/source/supervisor/speed-cam.conf
+wget -O supervisor/speed-cam.conf -q --show-progress https://raw.githubusercontent.com/lexhartman/speed-camera/master/source/supervisor/speed-cam.conf
 fi
 
 if [ ! -f supervisor/speed-web.conf ]; then   # Do not overwrite existing file
-wget -O supervisor/speed-web.conf -q --show-progress https://raw.github.com/pageauc/speed-camera/master/source/supervisor/speed-web.conf
+wget -O supervisor/speed-web.conf -q --show-progress https://raw.githubusercontent.com/lexhartman/speed-camera/master/source/supervisor/speed-web.conf
 fi
 
-wget -O supervisor/Readme.md -q --show-progress https://raw.github.com/pageauc/speed-camera/master/source/supervisor/Readme.md
-wget -O media/webserver.txt -q --show-progress https://raw.github.com/pageauc/speed-camera/master/source/webserver.txt
+wget -O supervisor/Readme.md -q --show-progress https://raw.githubusercontent.com/lexhartman/speed-camera/master/source/supervisor/Readme.md
+wget -O media/webserver.txt -q --show-progress https://raw.githubusercontent.com/lexhartman/speed-camera/master/source/webserver.txt
 
-wget -q --show-progress -nc https://raw.github.com/pageauc/speed-camera/master/source/user_motion_code.py
+wget -q --show-progress -nc https://raw.githubusercontent.com/lexhartman/speed-camera/master/source/user_motion_code.py
 
 
 if [ -f config.py ]; then     # check if local file exists.
-wget -O config.py.new -q --show-progress https://raw.github.com/pageauc/speed-camera/master/source/config.py
+wget -O config.py.new -q --show-progress https://raw.githubusercontent.com/lexhartman/speed-camera/master/source/config.py
 else
-wget -O config.py -q --show-progress https://raw.github.com/pageauc/speed-camera/master/source/config.py
+wget -O config.py -q --show-progress https://raw.githubusercontent.com/lexhartman/speed-camera/master/source/config.py
 fi
 
 
 if [ ! -f rclone-security-sync-recent.sh ] ; then
-wget -O rclone-security-sync-recent.sh -q --show-progress https://raw.github.com/pageauc/speed-camera/master/source/rclone-samples/rclone-security-sync-recent.sh
+wget -O rclone-security-sync-recent.sh -q --show-progress https://raw.githubusercontent.com/lexhartman/speed-camera/master/source/rclone-samples/rclone-security-sync-recent.sh
 fi
 
 # Install plugins if not already installed.  You must delete a plugin file to force reinstall.
@@ -93,13 +93,13 @@ for fname in "${pluginFiles[@]}" ; do
 if [ -f $fname ]; then     # check if local file exists.
 echo "INFO  : $fname plugin Found.  Skip Download ..."
 else
-wget_output=$(wget -O $fname -q --show-progress https://raw.github.com/pageauc/speed-camera/master/source/plugins/$fname)
+wget_output=$(wget -O $fname -q --show-progress https://raw.githubusercontent.com/lexhartman/speed-camera/master/source/plugins/$fname)
 if [ $? -ne 0 ]; then
-wget_output=$(wget -O $fname -q https://raw.github.com/pageauc/speed-camera/master/source/plugins/$fname)
+wget_output=$(wget -O $fname -q https://raw.githubusercontent.com/lexhartman/speed-camera/master/source/plugins/$fname)
 if [ $? -ne 0 ]; then
 echo "ERROR : $fname wget Download Failed. Possible Cause Internet Problem."
 else
-wget -O $fname "https://raw.github.com/pageauc/speed-camera/master/source/plugins/$fname"
+wget -O $fname "https://raw.githubusercontent.com/lexhartman/speed-camera/master/source/plugins/$fname"
 fi
 fi
 fi
@@ -115,13 +115,13 @@ rcloneFiles=("rclone-security-copy.sh" "rclone-security-sync.sh" "rclone-securit
 mkdir -p $RCLONE_DIR
 cd $RCLONE_DIR
 for fname in "${rcloneFiles[@]}" ; do
-wget_output=$(wget -O $fname -q --show-progress https://raw.github.com/pageauc/speed-camera/master/source/rclone-samples/$fname)
+wget_output=$(wget -O $fname -q --show-progress https://raw.githubusercontent.com/lexhartman/speed-camera/master/source/rclone-samples/$fname)
 if [ $? -ne 0 ]; then
-wget_output=$(wget -O $fname -q https://raw.github.com/pageauc/speed-camera/master/source/rclone-samples/$fname)
+wget_output=$(wget -O $fname -q https://raw.githubusercontent.com/lexhartman/speed-camera/master/source/rclone-samples/$fname)
 if [ $? -ne 0 ]; then
 echo "ERROR : $fname wget Download Failed. Possible Cause Internet Problem."
 else
-wget -O $fname "https://raw.github.com/pageauc/speed-camera/master/source/rclone-samples/$fname"
+wget -O $fname "https://raw.githubusercontent.com/lexhartman/speed-camera/master/source/rclone-samples/$fname"
 fi
 fi
 done

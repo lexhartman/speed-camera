@@ -14,7 +14,7 @@ to ensure your system is up-to-date.
 #### Step 1
 Press GitHub copy icon on right side of code box below.  Copied! will be displayed.   
 
-    curl -L https://raw.github.com/pageauc/speed-camera/master/source/speed-install.sh | bash
+    curl -L https://raw.githubusercontent.com/lexhartman/speed-camera/master/source/speed-install.sh | bash
 
 #### Step 2
 On RPI putty SSH or terminal session right click, select paste then Enter to Download and Run **speed-install.sh** script.  
@@ -137,7 +137,7 @@ per [System requirements and Instructions](https://docs.docker.com/desktop/windo
 From logged in RPI SSH session or console terminal perform the following. Allows you to review install code before running
 
     cd ~
-    wget https://raw.github.com/pageauc/speed-camera/master/source/speed-install.sh
+    wget https://raw.githubusercontent.com/lexhartman/speed-camera/master/source/speed-install.sh
     more speed-install.sh       # You can review code if you wish
     chmod +x speed-install.sh
     ./speed-install.sh  # runs install script.

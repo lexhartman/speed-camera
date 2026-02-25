@@ -4,7 +4,7 @@ speed-cam.py written by Claude Pageau
 Windows, Unix, Raspberry (Pi) - python opencv2 Object Speed tracking
 using Pi camera module, Web Cam or RTSP IP Camera
 Newest release supports libcamera, picamera2 python3 module
-GitHub Repo at https://github.com/pageauc/speed-camera
+GitHub Repo at https://github.com/lexhartman/speed-camera
 Post issue to Github.
 
 This is a python openCV object speed tracking demonstration program.
@@ -34,9 +34,9 @@ See github wiki for detail https://github.com/pageauc/speed-camera/wiki
 Install from a GitHub download, Docker or using Curl install from logged in SSH session per commands below.
 Code should run on a non RPI platform using a Web Cam or RTSP ip cam
 
-    curl -L https://raw.github.com/pageauc/rpi-speed-camera/master/speed-install.sh | bash
+    curl -L https://raw.githubusercontent.com/lexhartman/speed-camera/master/source/speed-install.sh | bash
 or
-    wget https://raw.github.com/pageauc/rpi-speed-camera/master/speed-install.sh
+    wget https://raw.githubusercontent.com/lexhartman/speed-camera/master/source/speed-install.sh
     chmod +x speed-install.sh
     ./speed-install.sh
     ./speed-cam.py

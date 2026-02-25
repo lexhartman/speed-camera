@@ -563,7 +563,7 @@ function do_report_menu ()
 {
   if [ ! -f ./sql_speed_gt.py ]; then
     echo "Downloading sql_speed_gt.py"
-    wget -O sql_speed_gt.py https://raw.github.com/pageauc/speed-camera/master/sql_speed_gt.py
+    wget -O sql_speed_gt.py https://raw.githubusercontent.com/lexhartman/speed-camera/master/source/sql_speed_gt.py
     chmod +x sql_speed_gt.py
     sudo apt-get install python-gnuplot
   fi
@@ -692,7 +692,7 @@ function do_upgrade()
                --yesno "Upgrade speed-cam Files from GitHub.\n Some config Files Will be Updated" 0 0 0 \
             s   --yes-button "upgrade" \
                --no-button "Cancel" ); then
-    curlcmd=('/usr/bin/curl -L https://raw.github.com/pageauc/rpi-speed-camera/master/source/speed-install.sh | bash')
+    curlcmd=('/usr/bin/curl -L https://raw.githubusercontent.com/lexhartman/speed-camera/master/source/speed-install.sh | bash')
     eval $curlcmd
     do_anykey
   fi
