@@ -84,7 +84,7 @@ elif [ "$1" = "uninstall" ]; then
     sudo supervisorctl update
 
 elif [ "$1" = "upgrade" ]; then
-    curl -L https://raw.github.com/pageauc/speed-camera/master/source/speed-install.sh | bash
+    curl -L https://raw.githubusercontent.com/lexhartman/speed-camera/master/source/speed-install.sh | bash
     exit 0
 else
    echo "
