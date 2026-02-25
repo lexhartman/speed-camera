@@ -58,6 +58,17 @@ function do_speed_cam ()
 {
   clear
   if [ -z "$( pgrep -f speed-cam.py )" ]; then
+     # Check if service is installed
+     if [ ! -f /etc/supervisor/conf.d/speed-cam.conf ]; then
+        if (whiptail --title "Speed Cam Service Not Installed" --yesno "The speed-cam service is not installed. Do you want to install it now?" 10 60); then
+            ./speed-cam.sh install
+        else
+            whiptail --msgbox "Cannot start speed-cam without installation." 10 60
+            do_main_menu
+            return
+        fi
+     fi
+
      ./speed-cam.sh start
      if [ -z "$( pgrep -f speed-cam.py )" ]; then
          whiptail --msgbox "Failed to Start speed-cam.py   Please Investigate Problem " 20 70
@@ -77,6 +88,17 @@ function do_webserver ()
 {
   clear
   if [ -z "$( pgrep -f speed-web.py )" ]; then
+     # Check if service is installed
+     if [ ! -f /etc/supervisor/conf.d/speed-web.conf ]; then
+        if (whiptail --title "Speed Web Service Not Installed" --yesno "The speed-web service is not installed. Do you want to install it now?" 10 60); then
+            ./speed-web.sh install
+        else
+            whiptail --msgbox "Cannot start speed-web without installation." 10 60
+            do_main_menu
+            return
+        fi
+     fi
+
      ./speed-web.sh start
      if [ -z "$( pgrep -f speed-web.py )" ]; then
         whiptail --msgbox "Failed to Start speed-web.py   Please Investigate Problem." 20 70
