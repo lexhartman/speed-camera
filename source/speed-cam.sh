@@ -7,7 +7,7 @@
 login_id=$( whoami )
 speed_dir=$( pwd )
 service_name="speed-cam"
-conf_file_dir="/home/$login_id/speed-camera/supervisor"
+conf_file_dir="$speed_dir/supervisor"
 conf_file_name="speed-cam.conf"
 
 # change supervisor conf file for current logged in user
