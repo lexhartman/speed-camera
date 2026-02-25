@@ -100,7 +100,8 @@ def strmcam():
             logging.getLogger('picamera2').setLevel(logging.CRITICAL)
             logging.getLogger('libcamera').setLevel(logging.CRITICAL)
             if not is_pi_legacy_cam():
-                if not os.path.exists('/usr/bin/libcamera-still'):
+                if not os.path.exists('/usr/bin/libcamera-still') and \
+                   not os.path.exists('/usr/bin/rpicam-still'):
                     logging.error('libcamera not Installed')
                     logging.info('Edit config.py and Change CAMERA variable as Required.')
                     sys.exit(1)
