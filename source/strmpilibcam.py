@@ -30,10 +30,22 @@ class CamStream:
         self.retries = 4
         while self.retries > 0:
             self.retries -= 1
-            if self.retries < 1:
-                import os
-                prog_path = os.path.abspath(__file__)
-                print(f"""
+            try:
+                self.picam2 = Picamera2() # initialize the camera
+                # self.picam2.set_logging(Picamera2.ERROR)
+                self.picam2.configure(self.picam2.create_preview_configuration(
+                                      main={"format": 'XRGB8888',
+                                      "size": self.size},
+                                      transform=Transform(vflip=self.vflip,
+                                                          hflip=self.hflip)))
+                break
+            except RuntimeError:
+                print(f'WARN : Camera Error. Retrying {self.retries}')
+                time.sleep(2)
+                if self.retries < 1:
+                    import os
+                    prog_path = os.path.abspath(__file__)
+                    print(f"""
 {prog_path}
 ERROR: Problem Starting RPI Camera Stream Thread
 ------------------------------------------------
@@ -58,20 +70,8 @@ ERROR: Problem Starting RPI Camera Stream Thread
 Bye
 Wait ...
 """)
-                sys.exit(1)
-            try:
-                self.picam2 = Picamera2() # initialize the camera
-                # self.picam2.set_logging(Picamera2.ERROR)
-                self.picam2.configure(self.picam2.create_preview_configuration(
-                                      main={"format": 'XRGB8888',
-                                      "size": self.size},
-                                      transform=Transform(vflip=self.vflip,
-                                                          hflip=self.hflip)))
-            except RuntimeError:
-                print(f'WARN : Camera Error. Retrying {self.retries}')
-                self.picam2.close()
+                    sys.exit(1)
                 continue
-            break
 
         self.picam2.start()
         time.sleep(2) # Allow camera time to warm up
