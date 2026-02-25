@@ -1730,11 +1730,12 @@ def speed_camera():
                             # Note cam_location and status may not be in proper order
                             # Unless speed table is recreated.
                             try:
-                                sql_cmd = """insert into {} values {}""".format(
-                                    DB_TABLE, speed_data
+                                placeholders = ', '.join(['?'] * len(speed_data))
+                                sql_cmd = "insert into {} values ({})".format(
+                                    DB_TABLE, placeholders
                                 )
                                 db_conn = db_check(DB_PATH)
-                                db_conn.execute(sql_cmd)
+                                db_conn.execute(sql_cmd, speed_data)
                                 db_conn.commit()
                                 db_conn.close()
                             except sqlite3.Error as e:
